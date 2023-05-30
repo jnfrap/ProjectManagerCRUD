@@ -22,6 +22,11 @@ const ProjectModel = db.define("Project", {
         type: DataTypes.ENUM('In progress', 'Completed', 'Cancelled', 'On hold', 'Not started'),
         allowNull: false
     }
-});
+},{
+    tableName: 'project',
+    freezeTableName: true,
+    timestamps: false
+}
+);
 
 export default ProjectModel;
