@@ -1,4 +1,4 @@
-import {Request, Response} from 'express';
+import { Request, Response } from 'express';
 import { handleHttp } from '../utils/error.handle';
 import { insertProjectService, getProjectsService, getProjectService, updateProjectService, deleteProjectService } from '../services/project';
 
@@ -36,7 +36,12 @@ const postProject = async (req: Request, res: Response) => {
 
 const deleteProject = async (req: Request, res: Response) => {
     try {
-        res.send(await deleteProjectService(Number(req.params.id) || -1));
+        const deletedRows = await deleteProjectService(Number(req.params.id) || -1);
+        if (deletedRows > 0) {
+            res.sendStatus(200);
+        }else {
+            res.sendStatus(404);
+        }
     }catch (e) {
         handleHttp(res, 'ERROR_DELETE_PROJECT', e);
     }

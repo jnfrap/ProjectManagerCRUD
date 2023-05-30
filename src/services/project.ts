@@ -28,7 +28,7 @@ const updateProjectService = async (id: number, Project: Project) => {
         status: Project.status
     }, {
         where: {
-            _id: id
+            id: id
         }
     });
 }
@@ -36,7 +36,7 @@ const updateProjectService = async (id: number, Project: Project) => {
 const deleteProjectService = async (id: number) => {
     return await ProjectModel.destroy({
         where: {
-            _id: id
+            id: id
         }
     });
 }
