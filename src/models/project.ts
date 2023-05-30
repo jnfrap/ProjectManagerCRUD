@@ -1,12 +1,27 @@
-import { Model, model, Schema } from "mongoose";
-import { Project } from "../interfaces/project";
+import { DataTypes } from "sequelize";
+import db from "../config/database";
 
-
-const projectSchema = new Schema<Project>(
-    {
-
+// import { Project } from "../interfaces/project";
+const ProjectModel = db.define("Project", {
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    description: {
+        type: DataTypes.STRING
+    },
+    start_date: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+    end_date: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+    status: {
+        type: DataTypes.ENUM('In progress', 'Completed', 'Cancelled', 'On hold', 'Not started'),
+        allowNull: false
     }
-);
+});
 
-const ProjectModel: Model<Project> = model("Project", projectSchema);
 export default ProjectModel;

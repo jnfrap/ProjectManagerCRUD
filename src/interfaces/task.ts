@@ -1,10 +1,9 @@
 export interface Task {
-    _id: string;
     name: string;
-    description: string;
-    createdAt: Date;
-    expiresAt: Date;
-    status: 'TODO' | 'DOING' | 'DONE';
-    project: string;
-    members: string[];
+    description?: string;
+    creation_date: Date;
+    due_date: Date;
+    status: 'In progress' | 'Completed' | 'Cancelled' | 'On hold' | 'Not started';
+    assigned_to: number;
+    related_project: string;
 }
