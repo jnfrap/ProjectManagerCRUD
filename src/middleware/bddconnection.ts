@@ -11,8 +11,8 @@ const closeConnectionAfterInactivity = () => {
     }, 5 * 60 * 1000);
 };
 
-const bddConnectionMiddleware = (req: Request, res: Response, next: NextFunction) => {
-    db.authenticate().then().catch((err) => console.log(err));
+const bddConnectionMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+    await db.authenticate().then().catch((err) => console.log(err));
     clearTimeout(connectionTimeout!);
     closeConnectionAfterInactivity();
     next();
