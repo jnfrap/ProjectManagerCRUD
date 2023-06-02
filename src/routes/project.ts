@@ -1,4 +1,4 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
 import { deleteProject, getProject, getProjects, postProject, updateProject } from "../controllers/project";
 
 const router = Router();

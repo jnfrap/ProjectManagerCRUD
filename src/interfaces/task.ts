@@ -5,5 +5,5 @@ export interface Task {
     due_date: Date;
     status: 'In progress' | 'Completed' | 'Cancelled' | 'On hold' | 'Not started';
     assigned_to: number;
-    related_project: string;
+    related_project: number;
 }
