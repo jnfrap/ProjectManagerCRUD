@@ -14,6 +14,12 @@ const db = new Sequelize({
             require: true,
             ca: fs.readFileSync(__dirname+'/ca.pem').toString()
         }
+    },
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
     }
 });
 
